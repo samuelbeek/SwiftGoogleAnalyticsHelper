@@ -9,7 +9,7 @@ Make sure you've added Google Analytics to your project, use the installation in
 ### Track Screen
 add this to the viewDidAppear() of a ViewController you'd like to track
 
-    setScreenName(name: "name of your view");
+    trackScreen(name: "your screen");
     
 ### Track Event
 add this within the function of your event. 
