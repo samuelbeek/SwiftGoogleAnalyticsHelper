@@ -6,17 +6,17 @@ Make sure you've added Google Analytics to your project, use the installation in
 
 ## Usage
 
-### Track Screen
+#### Track Screen
 add this to the viewDidAppear() of a ViewController you'd like to track
 
     trackScreen(name: "your screen");
     
-### Track Event
+#### Track Event
 add this within the function of your event. 
 
     trackEvent("your category", action: "your action", label: "your label", value: nil)
 
-### Set Tracked User
+#### Set Tracked User
 add this to your application didFinishLaunchingWithOptions 
 
     setTrackedUserID("your id")
