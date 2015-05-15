@@ -10,25 +10,25 @@ import UIKit
 
 extension UIViewController {
     
-    // sets screen name and send it to Google Analytics
+
+extension UIViewController {
+    
     func trackScreen(name: String) {
-        self.title = name
-        self.sendScreenView()
+        self.sendScreenView(name)
     }
     
-    func sendScreenView() {
+    func sendScreenView(name: String) {
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: self.title)
-        tracker.send(GAIDictionaryBuilder.createScreenView().build())
+        let build = GAIDictionaryBuilder.createAppView().set(name, forKey: kGAIScreenName).build() as NSDictionary
+        tracker.send(build as [NSObject : AnyObject])
     }
     
-    // sends an event to Google Analytics
     func trackEvent(category: String, action: String, label: String, value: NSNumber?) {
         let tracker = GAI.sharedInstance().defaultTracker
         let trackDictionary = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value).build()
-        tracker.send(trackDictionary)
+        tracker.send(trackDictionary as [NSObject : AnyObject])
     }
-    
+
 }
 
 // sends the user id to Google Analytics
